@@ -30,3 +30,23 @@ def entry(request, title):
         return render(request, "encyclopedia/error.html", {
             "message": "The requested page was not found."
         })
+
+
+def search(request):
+    if request.method == "POST":
+        query = request.POST["q"]
+        html_content = convert_md_to_html(util.get_entry(query))
+        if html_content:
+            return render(request, "encyclopedia/entry.html", {
+                "title": query,
+                "content": html_content
+            })
+        else:
+            entries = util.list_entries()
+            results = []
+            for entry in entries:
+                if query.lower() in entry.lower():
+                    results.append(entry)
+            return render(request, "encyclopedia/search.html", {
+                "results": results
+            })
