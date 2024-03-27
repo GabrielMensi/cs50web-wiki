@@ -8,8 +8,12 @@
     <h1>Search Results</h1>
 
     <ul>
-        {% for entry in results %}
-            <li><a href="{% url 'entry' title=entry %}">{{ entry|capfirst }}</a></li>
-        {% endfor %}
+        {% if results %}
+            {% for entry in results %}
+                <li><a href="{% url 'entry' title=entry %}">{{ entry|capfirst }}</a></li>
+            {% endfor %}
+        {% else %}
+            <li>No results found</li>
+        {% endif %}
     </ul>
 {% endblock %}
