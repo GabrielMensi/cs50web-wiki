@@ -5,7 +5,6 @@ from markdown2 import Markdown
 
 
 def convert_md_to_html(entry):
-    print("convert entry:" + entry)
     markdowner = Markdown()
     if entry:
         return markdowner.convert(entry)
