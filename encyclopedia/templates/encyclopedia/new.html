@@ -9,9 +9,13 @@
     <form action="{% url 'new' %}" method="POST">
         {% csrf_token %}
         <label for="title">Title</label>
+        <br>
         <input type="text" name="title">
+        <br>
         <label for="content">Entry</label>
+        <br>
         <textarea name="content" id="content" ></textarea>
-        <button type="submit">Create</button>
+        <br>
+        <button type="submit" class="btn btn-primary">Create</button>
     </form>
 {% endblock %}
