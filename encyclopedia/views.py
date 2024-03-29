@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 
 from . import util
 from markdown2 import Markdown
+import random
 
 
 def convert_md_to_html(entry):
@@ -78,3 +79,8 @@ def edit(request, title):
         content = request.POST["content"]
         util.save_entry(title, content)
         return redirect("entry", title=title)
+
+
+def random_entry(request):
+    entries = util.list_entries()
+    return redirect("entry", title=random.choice(entries))
