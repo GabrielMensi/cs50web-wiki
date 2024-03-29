@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from . import util
 from markdown2 import Markdown
@@ -50,3 +50,18 @@ def search(request):
             return render(request, "encyclopedia/search.html", {
                 "results": results
             })
+
+
+def new(request):
+    if request.method == "GET":
+        return render(request, "encyclopedia/new.html")
+    elif request.method == "POST":
+        title = request.POST["title"]
+        if util.get_entry(title):
+            return render(request, "encyclopedia/error.html", {
+                "message": "The entry already exists."
+            })
+        else:
+            content = request.POST["content"]
+            util.save_entry(title, content)
+            return redirect("entry", title=title)
