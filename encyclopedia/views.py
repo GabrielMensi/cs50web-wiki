@@ -38,10 +38,7 @@ def search(request):
         query = request.POST["q"]
         html_content = convert_md_to_html(util.get_entry(query))
         if html_content:
-            return render(request, "encyclopedia/entry.html", {
-                "title": query,
-                "content": html_content
-            })
+            return redirect("entry", title=query)
         else:
             entries = util.list_entries()
             results = []
