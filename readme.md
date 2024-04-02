@@ -13,7 +13,7 @@ This project is an online encyclopedia similar to Wikipedia, built using the Pyt
 
 ## Video Presentation
 
-You can see the video 
+You can see the video [Here](https://www.youtube.com/watch?v=gn7dA7vTcjg)
 
 
 ## Installation
@@ -37,7 +37,7 @@ cd cs50web-wiki
 
 ## Usage
 
-1. Run the project with:
+1. Run the project:
 
 ```bash
 python manage.py runserver
